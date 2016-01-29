@@ -7,7 +7,7 @@
 <body>
 	<?php
 		session_start();
-		if ($_SESSION['login']) {
+		if (!isset($_SESSION['login'])) {
 			?>
 				<a href="login.html">登入</a>
 				<a href="regist.html">注册</a>
@@ -16,10 +16,12 @@
 		else{
 			?>
 			<form action="logout.php" method="post">
-				<input type="button" value="注销">
+				<input type="submit" value="注销">
+				<a href="member.php" target="_blank" >个人空间</a>
 			</form>
 			<?php
 		}
 	?>
+	<a href="file.php">投稿</a>
 </body>
 </html>
