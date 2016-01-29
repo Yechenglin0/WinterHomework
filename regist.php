@@ -1,11 +1,16 @@
 <meta charset="UTF-8">
 <?php
 	include 'connect.php';
+	session_start();
+	$yzm=$_POST['yzm_code'];
 	$name=$_POST['name'];
 	$password=md5($_POST['password']);
 	$re_password=md5($_POST['re_password']);
 	$nickname=$_POST['nickname'];
 
+	if ($yzm!=$_SESSION['yzm_code']) {
+		die("<script>alert('验证码错误！！');history.go(-1);</script>");
+	}
     if ($password!=$re_password) {
 		die("<script>alert('2次密码不同！！');history.go(-1);</script>");
 	}
